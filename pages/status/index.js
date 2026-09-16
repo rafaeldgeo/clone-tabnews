@@ -51,7 +51,7 @@ function DataBaseStatus() {
   }
   return (
     <>
-      <h2>Databese</h2>
+      <h2>Database</h2>
       <div>{databaseStatusInformation}</div>
     </>
   );
