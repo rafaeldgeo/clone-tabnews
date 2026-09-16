@@ -13,7 +13,7 @@ describe("GET /api/v1/status", () => {
       const responseBody = await response.json();
 
       expect(responseBody.updated_at).toBeDefined();
-      
+
       const parsedUpdatedAt = new Date(responseBody.updated_at).toISOString();
       expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
 
