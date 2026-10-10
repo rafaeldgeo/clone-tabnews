@@ -40,7 +40,7 @@ describe("POST /api/v1/users", () => {
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
     });
 
-     test("With duplicated email", async () => {
+    test("With duplicated email", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
         headers: {
@@ -74,8 +74,8 @@ describe("POST /api/v1/users", () => {
         name: "ValidationError",
         message: "O email informado já está sendo utilizado",
         action: "Utilize outro email para realizar o cadastro",
-        statusCode: 400
-      })
+        statusCode: 400,
+      });
     });
 
     test("With duplicated username", async () => {
@@ -112,8 +112,8 @@ describe("POST /api/v1/users", () => {
         name: "ValidationError",
         message: "O username informado já está sendo utilizado",
         action: "Utilize outro username para realizar o cadastro",
-        statusCode: 400
-      })
+        statusCode: 400,
+      });
     });
   });
 });

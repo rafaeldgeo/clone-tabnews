@@ -13,5 +13,3 @@ async function getHandler(request, response) {
   const userfound = await user.findOneByUsername(username);
   return response.status(200).json(userfound);
 }
-
-

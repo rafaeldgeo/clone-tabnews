@@ -9,7 +9,7 @@ beforeAll(async () => {
 
 describe("GET /api/v1/[username]", () => {
   describe("Anonymous user", () => {
-     test("With exact case match", async () => {
+    test("With exact case match", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
         headers: {
@@ -24,7 +24,9 @@ describe("GET /api/v1/[username]", () => {
 
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch("http://localhost:3000/api/v1/users/MesmoCase");
+      const response2 = await fetch(
+        "http://localhost:3000/api/v1/users/MesmoCase",
+      );
 
       expect(response2.status).toBe(200);
 
@@ -59,7 +61,9 @@ describe("GET /api/v1/[username]", () => {
 
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch("http://localhost:3000/api/v1/users/Casediferente");
+      const response2 = await fetch(
+        "http://localhost:3000/api/v1/users/Casediferente",
+      );
 
       expect(response2.status).toBe(200);
 
@@ -80,8 +84,9 @@ describe("GET /api/v1/[username]", () => {
     });
 
     test("With nonexistent username", async () => {
-      
-      const response = await fetch("http://localhost:3000/api/v1/users/UsuarioInexistente");
+      const response = await fetch(
+        "http://localhost:3000/api/v1/users/UsuarioInexistente",
+      );
 
       expect(response.status).toBe(404);
 
@@ -91,7 +96,7 @@ describe("GET /api/v1/[username]", () => {
         name: "NotFoundError",
         message: "O username informado não foi encontrado no sistema",
         action: "Verifique se o username está digitado corretamente",
-        statusCode: 404
+        statusCode: 404,
       });
     });
   });
