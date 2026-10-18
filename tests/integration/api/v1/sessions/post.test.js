@@ -29,7 +29,7 @@ describe("POST /api/v1/sessions", () => {
 
       expect(response.status).toBe(401);
 
-      const reponseBody = await response.json({
+      const responseBody = await response.json({
         name: "UnauthorizedError",
         message: "Dados de autendicação não conferem",
         action: "Verifique se os dados enviados estão corretos",
@@ -53,7 +53,7 @@ describe("POST /api/v1/sessions", () => {
 
       expect(response.status).toBe(401);
 
-      const reponseBody = await response.json({
+      const responseBody = await response.json({
         name: "UnauthorizedError",
         message: "Dados de autendicação não conferem",
         action: "Verifique se os dados enviados estão corretos",
@@ -79,7 +79,7 @@ describe("POST /api/v1/sessions", () => {
 
       expect(response.status).toBe(401);
 
-      const reponseBody = await response.json({
+      const responseBody = await response.json({
         name: "UnauthorizedError",
         message: "Dados de autendicação não conferem",
         action: "Verifique se os dados enviados estão corretos",
