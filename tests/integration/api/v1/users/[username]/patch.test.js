@@ -1,5 +1,5 @@
 import { version as uuidVersion } from "uuid";
-import orchestrator from "../../orchestrator.js";
+import orchestrator from "../../../../../orchestrator.js";
 import user from "models/user.js";
 import password from "models/password.js";
 
@@ -120,7 +120,7 @@ describe("PATCH /api/v1/users/[username]", () => {
         id: responseBody.id,
         username: "uniqueUser2",
         email: createdUser.email,
-        features: [],
+        features: ["read:activation_token"],
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
@@ -158,7 +158,7 @@ describe("PATCH /api/v1/users/[username]", () => {
         id: responseBody.id,
         username: createdUser.username,
         email: "uniqueEmail2@curso.dev",
-        features: [],
+        features: ["read:activation_token"],
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
@@ -197,7 +197,7 @@ describe("PATCH /api/v1/users/[username]", () => {
         id: responseBody.id,
         username: createdUser.username,
         email: createdUser.email,
-        features: [],
+        features: ["read:activation_token"],
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,

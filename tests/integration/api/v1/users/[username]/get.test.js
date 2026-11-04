@@ -1,5 +1,5 @@
 import { version as uuidVersion } from "uuid";
-import orchestrator from "../../orchestrator";
+import orchestrator from "../../../../../orchestrator";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
@@ -26,7 +26,7 @@ describe("GET /api/v1/users/[username]", () => {
         id: responseBody.id,
         username: "MesmoCase",
         email: createdUser.email,
-        features: [],
+        features: ["read:activation_token"],
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
@@ -54,7 +54,7 @@ describe("GET /api/v1/users/[username]", () => {
         id: responseBody.id,
         username: "CaseDiferente",
         email: createdUser.email,
-        features: [],
+        features: ["read:activation_token"],
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,

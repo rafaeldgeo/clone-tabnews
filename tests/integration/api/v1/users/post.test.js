@@ -1,5 +1,5 @@
 import { version as uuidVersion } from "uuid";
-import orchestrator from "../orchestrator.js";
+import orchestrator from "../../../../orchestrator.js";
 import user from "models/user.js";
 import password from "models/password.js";
 
@@ -32,7 +32,7 @@ describe("POST /api/v1/users", () => {
         id: responseBody.id,
         username: "rafaeldias",
         email: "rafael@gmail.com",
-        features: [],
+        features: ["read:activation_token"],
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
