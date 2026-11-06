@@ -1,6 +1,6 @@
 import { version as uuidVersion } from "uuid";
 import setCookieParsers from "set-cookie-parser";
-import orchestrator from "../orchestrator.js";
+import orchestrator from "tests/orchestrator.js";
 import session from "models/session.js";
 
 beforeAll(async () => {
@@ -37,6 +37,7 @@ describe("GET /api/v1/user", () => {
         id: createdUser.id,
         username: "UserWithValidSession",
         email: createdUser.email,
+        features: ["read:activation_token"],
         password: createdUser.password,
         created_at: createdUser.created_at.toISOString(),
         updated_at: createdUser.updated_at.toISOString(),
@@ -99,6 +100,7 @@ describe("GET /api/v1/user", () => {
         id: createdUser.id,
         username: "UserWithHalfwayExpiredSession",
         email: createdUser.email,
+        features: ["read:activation_token"],
         password: createdUser.password,
         created_at: createdUser.created_at.toISOString(),
         updated_at: createdUser.updated_at.toISOString(),
