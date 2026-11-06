@@ -1,5 +1,5 @@
 import email from "infra/email.js";
-import orchestrator from "../../orchestrator.js";
+import orchestrator from "tests/orchestrator.js";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();

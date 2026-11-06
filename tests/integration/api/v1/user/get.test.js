@@ -1,6 +1,6 @@
 import { version as uuidVersion } from "uuid";
 import setCookieParsers from "set-cookie-parser";
-import orchestrator from "../../../../orchestrator.js";
+import orchestrator from "tests/orchestrator.js";
 import session from "models/session.js";
 
 beforeAll(async () => {
