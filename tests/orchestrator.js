@@ -1,9 +1,10 @@
 import retry from "async-retry";
 import { faker } from "@faker-js/faker";
+
 import database from "infra/database.js";
 import migrator from "models/migrator.js";
 import user from "models/user.js";
-import session from "models/session";
+import session from "models/session.js";
 
 const emailHttpUrl = `http://${process.env.EMAIL_HTTP_HOST}:${process.env.EMAIL_HTTP_PORT}`;
 
@@ -19,6 +20,7 @@ async function waitForAllServices() {
 
     async function fetchStatusPage() {
       const response = await fetch("http://localhost:3000/api/v1/status");
+
       if (response.status !== 200) {
         throw Error();
       }
@@ -33,6 +35,7 @@ async function waitForAllServices() {
 
     async function fetchEmailPage() {
       const response = await fetch(emailHttpUrl);
+
       if (response.status !== 200) {
         throw Error();
       }
@@ -41,7 +44,7 @@ async function waitForAllServices() {
 }
 
 async function clearDatabase() {
-  await database.query("drop schema public cascade; create schema public");
+  await database.query("drop schema public cascade; create schema public;");
 }
 
 async function runPendingMigrations() {
@@ -80,8 +83,14 @@ async function getLastEmail() {
     `${emailHttpUrl}/messages/${lastEmailItem.id}.plain`,
   );
   const emailTextBody = await emailTextResponse.text();
+
   lastEmailItem.text = emailTextBody;
   return lastEmailItem;
+}
+
+function extractUUID(text) {
+  const match = text.match(/[0-9a-fA-F-]{36}/);
+  return match ? match[0] : null;
 }
 
 const orchestrator = {
@@ -92,6 +101,7 @@ const orchestrator = {
   createSession,
   deleteAllEmails,
   getLastEmail,
+  extractUUID,
 };
 
 export default orchestrator;
