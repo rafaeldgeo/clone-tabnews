@@ -25,8 +25,8 @@ describe("PATCH /api/v1/users/[username]", () => {
 
       expect(responseBody).toEqual({
         name: "NotFoundError",
-        message: "O username informado não foi encontrado no sistema",
-        action: "Verifique se o username está digitado corretamente",
+        message: "O username informado não foi encontrado no sistema.",
+        action: "Verifique se o username está digitado corretamente.",
         statusCode: 404,
       });
     });
@@ -56,8 +56,8 @@ describe("PATCH /api/v1/users/[username]", () => {
 
       expect(responseBody).toEqual({
         name: "ValidationError",
-        message: "O username informado já está sendo utilizado",
-        action: "Utilize outro username para realizar esta operação",
+        message: "O username informado já está sendo utilizado.",
+        action: "Utilize outro username para realizar esta operação.",
         statusCode: 400,
       });
     });
@@ -90,8 +90,8 @@ describe("PATCH /api/v1/users/[username]", () => {
 
       expect(responseBody).toEqual({
         name: "ValidationError",
-        message: "O email informado já está sendo utilizado",
-        action: "Utilize outro email para realizar esta operação",
+        message: "O email informado já está sendo utilizado.",
+        action: "Utilize outro email para realizar esta operação.",
         statusCode: 400,
       });
     });

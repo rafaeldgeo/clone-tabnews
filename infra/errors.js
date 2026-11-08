@@ -60,7 +60,7 @@ export class ValidationError extends Error {
 
 export class NotFoundError extends Error {
   constructor({ cause, message, action }) {
-    super(message || "Não foi possível encontrar esse recurso no sistema ", {
+    super(message || "Não foi possível encontrar esse recurso no sistema", {
       cause,
     });
     this.name = "NotFoundError";
@@ -87,6 +87,27 @@ export class UnauthorizedError extends Error {
     this.name = "UnauthorizedError";
     this.action = action || "Faça novamente o login para continua";
     this.statusCode = 401;
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      action: this.action,
+      statusCode: this.statusCode,
+    };
+  }
+}
+
+export class ForbiddenError extends Error {
+  constructor({ cause, message, action }) {
+    super(message || "Acesso negado", {
+      cause,
+    });
+    this.name = "ForbiddenError";
+    this.action =
+      action || "Verifique as features necessárias antes de continuar";
+    this.statusCode = 403;
   }
 
   toJSON() {
